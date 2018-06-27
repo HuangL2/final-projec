@@ -67,7 +67,7 @@ router.get('/', function (req, res) {
      res.send({spotify: req.cookies.spotifyCode, youtube: req.cookies.youtubeCode});
 });
 
-router.get('/logout/youtube',authCheckYoutube ,function (req, res) {
+router.post('/logout/youtube',authCheckYoutube ,function (req, res) {
     const userJWT = req.cookies.youtubeCode;
     const userJWTPayload = jwt.verify(userJWT, keys.jwtSecret);
 
@@ -81,7 +81,7 @@ router.get('/logout/youtube',authCheckYoutube ,function (req, res) {
         });
 });
 
-router.get('/logout/spotify',authCheckSpotify, function (req, res) {
+router.post('/logout/spotify',authCheckSpotify, function (req, res) {
     const userJWT = req.cookies.spotifyCode;
     const userJWTPayload = jwt.verify(userJWT, keys.jwtSecret);
 
@@ -95,7 +95,7 @@ router.get('/logout/spotify',authCheckSpotify, function (req, res) {
         });
 });
 
-router.get('/playlist', authCheckSpotify, function (req, res) {
+router.post('/playlist', authCheckSpotify, function (req, res) {
     Playlist.findOne({userId: req.user.spotify.id}, function (err, playlist) {
         if(err)                 // error occurred
             throw err;
