@@ -4,7 +4,7 @@ const express = require('express'),
 const Playlist = require('../models/playlist_model'),
     User = require('../models/user_model');
 const keys = require('../config/keys'),
-    urls = require('../config/urls');
+    urls = require('../url/urls');
 const {google} = require('googleapis'),
     youtube = google.youtube('v3');
 

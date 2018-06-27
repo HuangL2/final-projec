@@ -3,7 +3,7 @@ const express = require('express'),
     request = require('request');
 const User = require('../models/user_model'),
     keys = require('../config/keys'),
-    urls = require('../config/urls');
+    urls = require('../url/urls');
 const router = express.Router();
 
 router.get('/login/spotify', function (req, res) {
